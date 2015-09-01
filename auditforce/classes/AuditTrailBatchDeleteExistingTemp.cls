@@ -4,7 +4,7 @@ global class AuditTrailBatchDeleteExistingTemp implements Database.Batchable<sOb
 
 	global Database.querylocator start(Database.BatchableContext BC) {
 		String dateString = maxDatetime.format('yyyy-MM-dd\'T\'hh:mm:ss\'Z\'');
-		return Database.getQueryLocator('SELECT Id FROM TEMP_Setup_Audit_Trail__c WHERE Date__c < '+dateString);
+		return Database.getQueryLocator('SELECT Id FROM TEMP_Setup_Audit_Trail__c WHERE Date__c <= '+dateString);
 	}
 
 	global void execute(Database.BatchableContext BC, List<sObject> scope){
